@@ -1,0 +1,22 @@
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-container {
+    --duration: 10s;
+}
+
+.marquee-container:hover .marquee-content,
+.marquee-container:focus-within .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-content {
+    animation: marquee var(--duration) linear infinite;
+}
