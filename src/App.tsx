@@ -25,7 +25,7 @@ import { useSocket } from "./CustomHooks/useSocket";
 
 
 // icons
-import SyncLoader from "react-spinners/SyncLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import { MdCopyAll } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 import { FaDownload } from "react-icons/fa6";
@@ -463,7 +463,7 @@ function App() {
 
     if (!username.length || !room.length)
         return <div className="w-full h-dvh flex justify-center items-center">
-            <Card className="w-full max-w-md">
+            <Card className="w-full max-w-md max-sm:max-w-sm mx-10">
                 <CardHeader>
                     <CardTitle>Create Username</CardTitle>
                     <CardDescription>Choose a unique username for your account</CardDescription>
@@ -509,7 +509,7 @@ function App() {
             {!socket?.connected
                 &&
                 <div className="w-full h-full absolute top-0 left-0 bg-[#181818] z-10 flex justify-center items-center">
-                    <SyncLoader
+                    <PropagateLoader
                         color="#fff"
                         size={30}
                     />
@@ -588,7 +588,7 @@ M188.8 -191C261.6 -116 349.3 -58 346.8 -2.5C344.4 53 251.7 106.1 178.9 147.7C106
 
             <section className="mt-20">
                 <h1 className="text-3xl ml-3">Connected</h1>
-                <div className=" flex  m-5">
+                <div className=" flex gap-5 flex-wrap m-5">
                     {Object.values(users).map(user => {
                         return <div
                             key={user.id}
