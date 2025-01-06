@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# SwiftSend 2.0 - Instant File Sharing, No Limits
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**SwiftSend** is a peer-to-peer (P2P) file-sharing platform designed for fast, secure, and effortless transfer of large files. Built with **React**, **Node.js**, **Socket.io**, and **WebRTC**, SwiftSend enables **direct, server-free file sharing** between users, ensuring **faster transfers** and **enhanced privacy**.
 
-Currently, two official plugins are available:
+With its intuitive interface, SwiftSend makes sending large files quick and easy. Users can securely upload, share, and download files directly, providing a fast and seamless P2P file-sharing experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Peer-to-Peer (P2P) File Sharing**: Share files directly with others without the need for a central server.
+- **Fast Transfers**: WebRTC ensures high-speed, direct browser-to-browser file transfers.
+- **No File Size Limits**: Send files of any size without restrictions.
+- **Secure and Private**: Transfers are direct and encrypted, ensuring complete privacy.
+- **Intuitive UI**: A simple, easy-to-use interface for seamless file sharing.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tech Stack
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Frontend**: React.js
+- **Backend**: Node.js
+- **WebRTC**: Peer-to-peer communication for real-time file transfers
+- **Socket.io**: Real-time communication between the client and server
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Installation
+
+### Prerequisites
+
+Ensure that you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- A modern web browser (e.g., Chrome, Firefox)
+
+
+### Steps to Run Locally
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/yourusername/SwiftSend2.git
+   cd SwiftSend2
+   ```
+
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+   3. **Start Frontend:**
+
+   ```bash
+   npm run dev
+   ```
+
+   4. **Access the app:**
+    Open your browser and navigate to http://localhost:3000 to start using SwiftSend2.
+
+    
