@@ -81,6 +81,7 @@ function App() {
     const socket = useSocket();
     const usernameInputRef = useRef<HTMLInputElement>(null)
     const roomInputRef = useRef<HTMLInputElement>(null)
+    const otherRoomInputRef = useRef<HTMLInputElement>(null)
     const peerConnections = useRef<peerConnectionsType>({});
     const dataChannels = useRef<dataChannelsType>({})
     const downloadedChunks = useRef<downloadedChunks>({})
@@ -420,7 +421,12 @@ function App() {
         return (downloadedChunks.current[id].receivedDataSize / downloadedChunks.current[id].fileSize) * 100
     }
 
-
+    function changeRoom() {
+        if (!otherRoomInputRef.current || !otherRoomInputRef.current.value.trim().length) return;
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('room', otherRoomInputRef.current.value.trim());
+        window.location.href = currentUrl.toString();
+    }
 
 
 
@@ -459,7 +465,8 @@ function App() {
 
         })
         socket?.connect();
-    }, [username])
+
+    }, [username, room])
 
     if (!username.length || !room.length)
         return <div className="w-full h-dvh flex justify-center items-center">
@@ -574,10 +581,12 @@ M188.8 -191C261.6 -116 349.3 -58 346.8 -2.5C344.4 53 251.7 106.1 178.9 147.7C106
                         <input
                             type="text"
                             spellCheck={false}
+                            ref={otherRoomInputRef}
                             placeholder="Join Other Room"
-                            className="h-full w-full bg-inherit px-6 py-4 text-white outline-none"
+                            className="h-full w-full bg-inherit px-5 py-4 text-white outline-none"
                         />
                         <button
+                            onClick={changeRoom}
                             className="bg-blue-400 rounded-full"
                         >Connect</button>
                     </div>
