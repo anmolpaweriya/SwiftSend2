@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { io, Socket } from "socket.io-client";
 
 const SocketContext = React.createContext<Socket | null>(null);
@@ -12,11 +12,23 @@ export default function SocketProvider({
 }: {
   children: React.ReactNode;
 }) {
-  // const api = "https://swiftsend.publicvm.com";
-  // const api = "http://localhost:8000";
-  const api = "https://swiftsend.anmolpaweriya.online";
-  const socket = io(api, { autoConnect: false });
+  const socket = useMemo(() => {
+    const hostname =
+      typeof window !== "undefined" && window.location.hostname
+        ? window.location.hostname
+        : "localhost";
+    const protocol =
+      typeof window !== "undefined" && window.location.protocol === "https:"
+        ? "https:"
+        : "http:";
+    const serverUrl =
+      import.meta.env.VITE_SERVER_URL || `${protocol}//${hostname}:8000`;
+
+    return io(serverUrl, { autoConnect: false });
+  }, []);
+
   return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );
 }
+
